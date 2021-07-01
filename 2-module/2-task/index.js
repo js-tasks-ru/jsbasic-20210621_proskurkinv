@@ -3,8 +3,5 @@ function isEmpty(obj) {
   for (const key in obj) {
     count++;
   }
-  if (count == 0) {
-    return true;
-  }
   return !(count > 0);
 }
