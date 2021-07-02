@@ -1,3 +1,7 @@
 function isEmpty(obj) {
-  // ваш код...
+  let count = 0;
+  for (const key in obj) {
+    count++;
+  }
+  return !(count > 0);
 }
