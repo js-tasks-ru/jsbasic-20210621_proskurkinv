@@ -1,10 +1,5 @@
 function filterRange(arr, a, b) {
   let copyStartArr = [...arr];
-  let foundItems = [];
-  for (const item in copyStartArr) {
-    if (copyStartArr[item] >= a && copyStartArr[item] <= b) {
-      foundItems.push(copyStartArr[item])
-    }
-  }
+  const foundItems = copyStartArr.filter(item => item >= a && item <= b)
   return foundItems;
 }
