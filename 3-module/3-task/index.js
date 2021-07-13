@@ -3,12 +3,15 @@ function camelize(str) {
     return str;
   }
   let splitStr = str.split('-');
-  splitStr = splitStr.filter(item => item.length)
-  for (const key in splitStr) {
-    console.log(key)
-    if(key != 0 || splitStr[key] == 'webkit') {
-      splitStr[key] = splitStr[key][0].toUpperCase() + splitStr[key].substring(1);
+  let newStr = '';
+  splitStr.map((item, index) => {
+    if (index === 0) {
+      newStr += item;
     }
-  }
-  return splitStr.join('');
+    if (index !== 0) {
+      item = item[0].toUpperCase() + item.substring(1);
+      newStr += item;
+    }
+  });
+  return newStr;
 }
