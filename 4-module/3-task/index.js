@@ -4,22 +4,20 @@ function highlight(table) {
       const element = table.rows[i].cells[j];
       if (element.dataset.available == 'true') {
         table.rows[i].classList.add('available');
-      }
-      else if (element.dataset.available == 'false') {
+      } else if (element.dataset.available == 'false') {
         table.rows[i].classList.add('unavailable');
       }
       if (table.rows[i].cells.length - 1 == j && element.dataset.available == undefined) {
         table.rows[i].setAttribute('hidden', 'hidden');
       }
-      table.rows[i].cells[j].innerHTML == 'm'
-        ? table.rows[i].classList.add('male')
-        : table.rows[i].cells[j].innerHTML == 'f'
-        ? table.rows[i].classList.add('female')
-        : '';
-
-      table.rows[i].cells[j].innerHTML < 18
-        ? table.rows[i].style.textDecoration = 'line-through'
-        : '';
+      if (table.rows[i].cells[j].innerHTML == 'm') {
+        table.rows[i].classList.add('male');
+      } else if (table.rows[i].cells[j].innerHTML == 'f') {
+        table.rows[i].classList.add('female');
+      }
+      if (table.rows[i].cells[j].innerHTML < 18) {
+        table.rows[i].style.textDecoration = 'line-through';
+      }
     }
   }
 }
