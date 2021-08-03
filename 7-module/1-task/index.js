@@ -3,7 +3,6 @@ import createElement from '../../assets/lib/create-element.js';
 export default class RibbonMenu {
   constructor(categories) {
     this.categories = categories;
-    this.elem;
     this.render();
   }
 
@@ -39,7 +38,7 @@ export default class RibbonMenu {
             </button>
         `;
     div.innerHTML = ribbon;
-    return this.elem = div;
+    this.elem = div;
   }
 
   selectCategory() {
@@ -53,9 +52,6 @@ export default class RibbonMenu {
           }
         });
         this.classList.add('ribbon__item_active');
-        this.addEventListener("ribbon-select", function (event) {
-
-        });
 
         this.dispatchEvent(new CustomEvent("ribbon-select", {
           detail: this.dataset.id,

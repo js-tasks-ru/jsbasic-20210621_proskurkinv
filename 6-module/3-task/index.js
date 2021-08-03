@@ -3,7 +3,6 @@ import createElement from '../../assets/lib/create-element.js';
 export default class Carousel {
   constructor(slides) {
     this.slides = slides;
-    this.elem;
     this.render();
   }
   render() {
@@ -40,7 +39,7 @@ export default class Carousel {
                     </div>
                     `;
     div.innerHTML = cards;
-    return this.elem = div;
+    this.elem = div;
   }
 
   initCarousel() {
@@ -84,15 +83,11 @@ export default class Carousel {
       const addToCartButton = card.querySelector('.carousel__button');
       addToCartButton.addEventListener('click', function (e) {
 
-        this.addEventListener("product-add", function (event) {
-
-        });
-
         this.dispatchEvent(new CustomEvent("product-add", {
           detail: card.dataset.id,
           bubbles: true
         }));
-      })
+      });
     });
   }
 }

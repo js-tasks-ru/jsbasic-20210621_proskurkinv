@@ -15,50 +15,51 @@
 export default class UserTable {
   constructor(rows) {
     this._rows = rows;
-    this.elem;
     this.render();
   }
-
   get _buttons() {
-    return this.elem.querySelectorAll('button');
+    return this.elem.querySelectorAll('button')
   }
-
   makeTable() {
-    const table = document.createElement('table');
-    table.innerHTML = `
-        <thead>
-            <tr>
-                <th>Имя</th>
-                <th>Возраст</th>
-                <th>Зарплата</th>
-                <th>Город</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            ${this._rows.map(item => {
+    return `
+        <table>
+          <thead>
+              <tr>
+                  <th>Имя</th>
+                  <th>Возраст</th>
+                  <th>Зарплата</th>
+                  <th>Город</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              ${this._rows.map(item => {
       return (
         `<tr>
-                    <td>${item.name}</td>
-                    <td>${item.age}</td>
-                    <td>${item.salary}</td>
-                    <td>${item.city}</td>
-                    <td><button>X</button></td>
-                </tr>`
+                      <td>${item.name}</td>
+                      <td>${item.age}</td>
+                      <td>${item.salary}</td>
+                      <td>${item.city}</td>
+                      <td><button>X</button></td>
+                  </tr>`
       )
     }).join('')}
-        </tbody>
-        `;
-    return this.elem = table;
+          </tbody>
+          </table>
+          `;
   }
-
+  renderTable() {
+    this.elem = document.createElement('div');
+    this.elem.innerHTML = this.makeTable();
+    return this.elem;
+  }
   render() {
-    this.makeTable();
+    this.renderTable();
     this._buttons.forEach(elem => {
       elem.addEventListener('click', (e) => {
         const lineElem = elem.parentNode.parentNode;
-        lineElem.parentNode.removeChild(lineElem)
-      })
-    })
+        lineElem.parentNode.removeChild(lineElem);
+      });
+    });
   }
 }

@@ -3,12 +3,11 @@ import createElement from '../../assets/lib/create-element.js';
 export default class ProductCard {
   constructor(product) {
     this._product = product;
-    this.elem;
     this.render();
   }
 
   makeCard() {
-    return this.elem = `
+    this.elem = `
             <div class='card'>
                             <div class="card__top">
                             <img src="/assets/images/products/${this._product.image}" class="card__image" alt="product">
@@ -25,12 +24,9 @@ export default class ProductCard {
   }
 
   button() {
-    const buttonEvent = this.elem.querySelector('.card__button')
+    const buttonEvent = this.elem.querySelector('.card__button');
 
     buttonEvent.addEventListener('click', function () {
-      this.addEventListener("product-add", function (event) {
-
-      });
       this.dispatchEvent(new CustomEvent("product-add", {
         detail: this.dataset.id,
         bubbles: true
